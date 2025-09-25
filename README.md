@@ -18,6 +18,7 @@ You can download the latest playable build from the [**Releases Page**](https://
 #### ### Controls
 * **Move:** `A/D` 
 * **Jump:** `Spacebar`
+* **Double-Jump:** `Spacebar*2`
 * **Down:** `S`
 * **Pause:** `Esc`
 
