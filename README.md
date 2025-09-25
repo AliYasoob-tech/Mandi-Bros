@@ -2,8 +2,6 @@
 
 > A short 2D platformer adventure inspired by the IIT Mandi campus.
 
-<img width="1671" height="939" alt="image" src="https://github.com/user-attachments/assets/d1cd180e-e39c-411a-b71c-a922413cb034" />
-
 ---
 
 ### ## About The Project
