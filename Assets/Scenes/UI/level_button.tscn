@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dovsokc7oqwfg"]
+
+[ext_resource type="Script" uid="uid://fcql1trpbu61" path="res://Assets/Scenes/UI/level_button.gd" id="1_he3it"]
+
+[node name="LevelButton" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_he3it")
+level_name = null
+level_path = null
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0

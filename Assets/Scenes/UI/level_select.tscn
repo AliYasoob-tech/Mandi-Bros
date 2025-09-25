@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://tgyg5pjplhj2"]
+
+[ext_resource type="Script" uid="uid://ck2cc25ogi52i" path="res://Assets/Scripts/level_select.gd" id="1_aamhn"]
+[ext_resource type="Texture2D" uid="uid://ceabvqfug3uis" path="res://Assets/Scenes/UI/bg1.jpg" id="2_vvr4v"]
+[ext_resource type="FontFile" uid="uid://og65hxmk2qq4" path="res://Assets/Scenes/UI/Xolonium-Regular.ttf" id="3_mmhsg"]
+[ext_resource type="AudioStream" uid="uid://bkphtufl1i37i" path="res://Assets/Sounds/Plains2.wav" id="4_mmhsg"]
+
+[node name="LevelSelectMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aamhn")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 1918.0
+offset_bottom = 1078.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_vvr4v")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 130
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 130
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 75
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_mmhsg")
+theme_override_font_sizes/font_size = 48
+text = "Select a Level"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 80
+theme_override_constants/v_separation = 30
+columns = 4
+
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 4.3
+theme_override_fonts/font = ExtResource("3_mmhsg")
+theme_override_font_sizes/font_size = 25
+text = "Back
+"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mmhsg")
+volume_db = -16.391
+autoplay = true

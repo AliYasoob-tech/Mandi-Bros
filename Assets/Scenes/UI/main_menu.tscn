@@ -1,0 +1,90 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmwg1ffboq6f2"]
+
+[ext_resource type="Script" uid="uid://dn5qmp2dvmkv8" path="res://Assets/Scripts/main_menu.gd" id="1_kl2x8"]
+[ext_resource type="Texture2D" uid="uid://ceabvqfug3uis" path="res://Assets/Scenes/UI/bg1.jpg" id="2_e1qle"]
+[ext_resource type="FontFile" uid="uid://og65hxmk2qq4" path="res://Assets/Scenes/UI/Xolonium-Regular.ttf" id="3_4idf6"]
+[ext_resource type="FontFile" uid="uid://6824g8ylnrmc" path="res://Assets/Scenes/UI/Poco.ttf" id="4_f4ln0"]
+[ext_resource type="AudioStream" uid="uid://bkphtufl1i37i" path="res://Assets/Sounds/Plains2.wav" id="5_f4ln0"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kl2x8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 2314.0
+offset_bottom = 1310.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_e1qle")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -125.0
+offset_top = -250.0
+offset_right = 125.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+
+[node name="Start" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_4idf6")
+theme_override_font_sizes/font_size = 21
+text = "START GAME"
+
+[node name="Select Level" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4idf6")
+theme_override_font_sizes/font_size = 21
+text = "SELECT LEVEL"
+
+[node name="Options" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4idf6")
+theme_override_font_sizes/font_size = 21
+text = "OPTIONS"
+
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4idf6")
+theme_override_font_sizes/font_size = 21
+text = "EXIT GAME"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = -25.0
+offset_right = 742.0
+offset_bottom = 151.0
+theme_override_colors/font_color = Color(1, 0.976471, 0.980392, 1)
+theme_override_colors/font_shadow_color = Color(0.77203, 1, 0.721587, 1)
+theme_override_constants/line_spacing = -45
+theme_override_fonts/font = ExtResource("4_f4ln0")
+theme_override_font_sizes/font_size = 146
+text = "Mandi Bros"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_f4ln0")
+volume_db = -16.048
+autoplay = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Select Level" to="." method="_on_select_level_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

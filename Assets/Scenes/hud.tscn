@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://d7c8lomtesnr"]
+
+[ext_resource type="Texture2D" uid="uid://gimq5lmxqcm4" path="res://Assets/Sprites/coin.png" id="1_th0pt"]
+[ext_resource type="Script" uid="uid://b8uamed2xl3v4" path="res://Assets/Scripts/hud.gd" id="1_xs5ck"]
+[ext_resource type="FontFile" uid="uid://og65hxmk2qq4" path="res://Assets/Scenes/UI/Xolonium-Regular.ttf" id="2_xs5ck"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7y1r"]
+atlas = ExtResource("1_th0pt")
+region = Rect2(0, 0, 16, 16)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_xs5ck")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 7.0
+offset_top = 9.0
+offset_right = 54.0
+offset_bottom = 49.0
+scale = Vector2(2.29726, 1.02326)
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_x7y1r")
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_xs5ck")
+theme_override_font_sizes/font_size = 26
+text = "x 0"

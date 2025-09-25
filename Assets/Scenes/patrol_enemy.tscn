@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcq1pofh1hf8t"]
+
+[ext_resource type="Script" uid="uid://b8o0rnpli0njt" path="res://Assets/Scripts/patrol_enemy.gd" id="1_l0dl6"]
+[ext_resource type="Texture2D" uid="uid://bou3un233uafm" path="res://Assets/Sprites/Hills Asset Pack/Sprites/Character 2/Run.png" id="1_nau0n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0dl6"]
+atlas = ExtResource("1_nau0n")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfe2b"]
+atlas = ExtResource("1_nau0n")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a0wr"]
+atlas = ExtResource("1_nau0n")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w40wi"]
+atlas = ExtResource("1_nau0n")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ue5x5"]
+atlas = ExtResource("1_nau0n")
+region = Rect2(200, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46b6b"]
+atlas = ExtResource("1_nau0n")
+region = Rect2(250, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ml5q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0dl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfe2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4a0wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w40wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ue5x5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46b6b")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_344cw"]
+radius = 12.0
+height = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0dl6"]
+size = Vector2(24, 31)
+
+[node name="PatrolEnemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 768
+script = ExtResource("1_l0dl6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0ml5q")
+animation = &"Run"
+autoplay = "Run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -1)
+shape = SubResource("CapsuleShape2D_344cw")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(1, -2.5)
+shape = SubResource("RectangleShape2D_l0dl6")
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]
