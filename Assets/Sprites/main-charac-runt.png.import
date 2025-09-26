@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6gwe3yjbpw2j"
-path="res://.godot/imported/Take Hit.png-0e517be0740d9204c574c9ce2edf413e.ctex"
+uid="uid://baqe1t7y7li52"
+path="res://.godot/imported/main-charac-runt.png-70636e9a21338fda45886b4fb9762d0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Hills Asset Pack/Sprites/Character 3/Take Hit.png"
-dest_files=["res://.godot/imported/Take Hit.png-0e517be0740d9204c574c9ce2edf413e.ctex"]
+source_file="res://Assets/Sprites/main-charac-runt.png"
+dest_files=["res://.godot/imported/main-charac-runt.png-70636e9a21338fda45886b4fb9762d0f.ctex"]
 
 [params]
 

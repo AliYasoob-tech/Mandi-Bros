@@ -1,22 +1,28 @@
 extends Node2D
 
-@export var player_controller : PlayerController
-@export var animation_player : AnimationPlayer
-@export var sprite : Sprite2D
+@export var player_controller : CharacterBody2D # It's better to type hint the actual node
+@export var animated_sprite : AnimatedSprite2D # The new reference
 
 func _process(_delta):
-	# flips the character sprite
-	if player_controller.direction == 1:
-		sprite.flip_h = false
-	elif player_controller.direction == -1:
-		sprite.flip_h = true
-	# plays the movement animation
-	if abs(player_controller.velocity.x) > 0.0:
-		animation_player.play("move")
+	if player_controller.velocity.x > 0:
+		animated_sprite.flip_h = false
+	elif player_controller.velocity.x < 0:
+		animated_sprite.flip_h = true
+
+	if not player_controller.is_on_floor():
+		# Player is in the air
+		if player_controller.velocity.y < 0:
+			play_animation("jump")
+		else:
+			play_animation("fall")
 	else:
-		animation_player.play("idle")
-	# plays the jump animation
-	if player_controller.velocity.y < 0.0:
-		animation_player.play("jump")
-	elif player_controller.velocity.y > 0.0:
-		animation_player.play("fall")
+		# Player is on the ground
+		if player_controller.velocity.x != 0:
+			play_animation("run")
+		else:
+			play_animation("idle")
+
+
+func play_animation(anim_name: String):
+	if animated_sprite.animation != anim_name:
+		animated_sprite.play(anim_name)
