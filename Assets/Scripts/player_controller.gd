@@ -45,7 +45,7 @@ func _input(event):
 		if velocity.y < 0:
 			velocity.y *= jump_release_multiplier
 
-	# Handle one-way platforms
+	# one-way platforms
 	if event.is_action_pressed("move_down"):
 		set_collision_mask_value(10, false)
 	else:
