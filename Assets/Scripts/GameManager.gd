@@ -10,3 +10,5 @@ func add_score(amount: int):
 
 func reset_score():
 	current_score = 0
+
+var current_checkpoint_position: Vector2 = Vector2.ZERO

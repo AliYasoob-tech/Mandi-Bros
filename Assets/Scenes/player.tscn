@@ -1,43 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://c6llf4qurcb5a"]
+[gd_scene load_steps=21 format=3 uid="uid://c6llf4qurcb5a"]
 
 [ext_resource type="Texture2D" uid="uid://bhjew62r4tvov" path="res://Assets/Sprites/main-charac-Sheet.png" id="1_6cd4h"]
 [ext_resource type="Script" uid="uid://boeukj3h0lchx" path="res://Assets/Scripts/player_controller.gd" id="1_7dd06"]
 [ext_resource type="Script" uid="uid://b0k0p6da72546" path="res://Assets/Scripts/player_animator.gd" id="2_38rej"]
 [ext_resource type="Texture2D" uid="uid://baqe1t7y7li52" path="res://Assets/Sprites/main-charac-runt.png" id="4_23lac"]
 [ext_resource type="AudioStream" uid="uid://cff788n572aia" path="res://Assets/Sounds/die.wav" id="4_t1xgp"]
-
-[sub_resource type="Animation" id="Animation_38rej"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_w3t24"]
-resource_name = "fall"
-step = 0.25
-
-[sub_resource type="Animation" id="Animation_7dd06"]
-resource_name = "idle"
-length = 1.25
-loop_mode = 1
-step = 0.25
-
-[sub_resource type="Animation" id="Animation_23lac"]
-resource_name = "jump"
-length = 0.25
-step = 0.25
-
-[sub_resource type="Animation" id="Animation_t1xgp"]
-resource_name = "move"
-length = 8.0
-loop_mode = 1
-step = 0.25
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_t1xgp"]
-_data = {
-&"RESET": SubResource("Animation_38rej"),
-&"fall": SubResource("Animation_w3t24"),
-&"idle": SubResource("Animation_7dd06"),
-&"jump": SubResource("Animation_23lac"),
-&"move": SubResource("Animation_t1xgp")
-}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3t24"]
 atlas = ExtResource("1_6cd4h")
@@ -96,6 +63,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_w3t24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3t24")
 }],
 "loop": true,
 "name": &"fall",
@@ -122,6 +92,9 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsrmw")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rsrmw")
 }],
@@ -159,12 +132,12 @@ radius = 11.0
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 258
 script = ExtResource("1_7dd06")
-speed = 9.0
-jump_power = 11.0
-double_jump_power = 9.0
+max_speed = 250.0
+acceleration = 1200.0
+jump_velocity = -300.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(0, -100)
+offset = Vector2(0, -50)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
@@ -174,20 +147,10 @@ script = ExtResource("2_38rej")
 player_controller = NodePath("..")
 animated_sprite = NodePath("AnimatedSprite2D")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerAnimator"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_t1xgp")
-}
-autoplay = "idle"
-speed_scale = 1.5
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerAnimator"]
 position = Vector2(-1, -16)
 sprite_frames = SubResource("SpriteFrames_xka8r")
-animation = &"run"
-frame = 4
-frame_progress = 0.803846
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -15)
